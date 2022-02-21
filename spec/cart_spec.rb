@@ -1,5 +1,5 @@
-require './line_item'
-require './cart'
+require './app/line_item'
+require './app/cart'
 
 RSpec.describe 'Cart' do
   let (:cart) { Cart.new }

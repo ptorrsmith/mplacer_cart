@@ -32,7 +32,7 @@ private
 		clear_screen
 		puts "=== Fetching available Products ==="
 
-		products_file = File.open("products.json")
+		products_file = File.open("./data/products.json")
 		@json_products = JSON.load(products_file)
 		@products = @json_products.map { |j|
 			product = Product.new(j)
