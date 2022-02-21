@@ -62,8 +62,8 @@ private
 			print '>> '
 			input = STDIN.gets.chomp.strip
 
-			if %w[q quit].include?(input.downcase)
-				print 'Quitting... are you sure? (y/n)'
+			if %w[c co checkout].include?(input.downcase)
+				print "Please confirm ok to charge your card $#{@cart.total} ... (y/n)"
 				break if gets.chomp.downcase == 'y'
 				clear_screen
 			else
@@ -93,6 +93,9 @@ private
 	def finish
 		clear_screen
 		puts "================================================="
+		puts "Your card has been charged $#{@cart.total} and your goods"
+		puts "  are being prepared for shipping."
+		puts "-------------------------------------------------"
 		puts "Have a great day - thank you for using Shopiby"
 		puts "================================================="
 	end
@@ -126,7 +129,7 @@ private
 
 	def show_options
 		puts "===================   SHOP   =================="
-		puts ">> Enter item ID to add to cart. 'q' to quit <<"
+		puts ">> Enter item ID to add to cart. 'c' to checkout and pay <<"
 	end
 
 	def faux_loading(product_count)
