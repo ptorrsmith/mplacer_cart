@@ -126,7 +126,7 @@ private
 
 	def show_options
 		puts "===================   SHOP   =================="
-		puts ">> Enter item ID. 'q' to quit <<"
+		puts ">> Enter item ID to add to cart. 'q' to quit <<"
 	end
 
 	def faux_loading(product_count)
