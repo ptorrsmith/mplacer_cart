@@ -57,24 +57,28 @@ private
 		loop do
 			show_cart
 			show_catalog
-			show_menu
+			show_options
+
 			print '>> '
 			input = STDIN.gets.chomp.strip
+
 			if %w[q quit].include?(input.downcase)
 				print 'Quitting... are you sure? (y/n)'
 				break if gets.chomp.downcase == 'y'
 				clear_screen
 			else
 				clear_screen
-				# puts "You entered '#{input.strip}'"
 				if input.to_i.is_a? Numeric # product uuid
 					# find product
 					product = @products.find { |p| p.uuid == input.to_i }
+
 					if product
 						puts "adding 1 x '#{product.name}'"
 						line_item = LineItem.new(product_id = product.uuid, quantity=1, unit_price=product.price, name=product.name)
 						@cart.line_items << line_item
+
 						sleep(1.5)
+
 						clear_screen
 						puts "added 1 x '#{product.name}'"
 					else
@@ -120,7 +124,7 @@ private
 		puts
 	end
 
-	def show_menu
+	def show_options
 		puts "===================   SHOP   =================="
 		puts ">> Enter item number. 'q' to quit <<"
 	end
