@@ -63,7 +63,7 @@ private
 			input = STDIN.gets.chomp.strip
 
 			if %w[c co checkout].include?(input.downcase)
-				print "Please confirm ok to charge your card $#{@cart.total} ... (y/n)"
+				print "Please confirm ok to charge your card $#{'%.2f' % @cart.total} ... (y/n)"
 				break if gets.chomp.downcase == 'y'
 				clear_screen
 			else
@@ -93,7 +93,7 @@ private
 	def finish
 		clear_screen
 		puts "================================================="
-		puts "Your card has been charged $#{@cart.total} and your goods"
+		puts "Your card has been charged $#{'%.2f' % @cart.total} and your goods"
 		puts "  are being prepared for shipping."
 		puts "-------------------------------------------------"
 		puts "Have a great day - thank you for using Shopiby"
@@ -103,7 +103,7 @@ private
 	def show_catalog
 		puts "=================== CATALOG ==================="
 		@products&.each { |product|
-			puts "ID: #{product.uuid} - `#{product.name}` @ $#{product.price}"
+			puts "ID: #{product.uuid} - `#{product.name}` @ $#{'%.2f' % product.price}"
 		}
 		puts
 	end
@@ -118,6 +118,7 @@ private
 			@cart.line_items.each { |line_item|
 				puts "ID: #{line_item.product_id} - '#{line_item.name}' x #{line_item.quantity} @ $#{line_item.unit_price} = $#{line_item.line_item_total}"
 			}
+			puts "----------------------------------"
 			puts "Subtotal: $#{'%.2f' % @cart.subtotal}"
 			puts "less discount: $#{'%.2f' % @cart.discount} (#{@cart.subtotal > 0 ? '%.0f' % (@cart.discount/@cart.subtotal * 100) : '0'}%)"
 			puts "----------------------------------"
