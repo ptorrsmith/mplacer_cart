@@ -17,4 +17,15 @@ From your terminal type
 
 From your terminal type
 
+`rspec`
+
+or
+
 `bundle exec rspec`
+
+
+## Creating a git bundle
+
+From your terminal type
+
+`git bundle create marketplacer-test-peter-torr-smith.bundle 01-basic-cart`
