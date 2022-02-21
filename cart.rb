@@ -6,7 +6,7 @@
 # end
 
 class Cart
-	attr_accessor :user_email, :line_items, :subtotal, :discount, :total
+	attr_accessor :user_email, :line_items
 
 	def initialize(user_email = 'customer@example.com')
 		@user_email = user_email
