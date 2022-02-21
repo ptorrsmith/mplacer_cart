@@ -44,5 +44,15 @@ RSpec.describe 'Cart' do
       expect(discount).to eq(40)
       expect(total).to eq(160)
     end
+
+    # TODO Cart add_to_cart method, group identical items
+    it 'should have a single line_item with a quantity of 2' #do
+    #   cart.line_items << line_item
+    #   cart.line_items << line_item
+
+    #   expect(cart.line_items.count).to eq(1)
+    #   expect(cart.line_items.first.quantity).to eq(2)
+    # end
+
   end
 end
