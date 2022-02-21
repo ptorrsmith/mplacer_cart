@@ -77,7 +77,7 @@ private
 						line_item = LineItem.new(product_id = product.uuid, quantity=1, unit_price=product.price, name=product.name)
 						@cart.line_items << line_item
 
-						sleep(1.5)
+						sleep(1)
 
 						clear_screen
 						puts "added 1 x '#{product.name}'"
