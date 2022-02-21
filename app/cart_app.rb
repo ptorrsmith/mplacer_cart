@@ -69,14 +69,14 @@ private
 			else
 				clear_screen
 				if input.to_i.is_a? Numeric # product uuid
-					# find product
-					product = @products.find { |p| p.uuid == input.to_i }
+					product_id = input.to_i
 
+					# confirm valid product
+					product = @products.find { |p| p.uuid == product_id }
 					if product
 						puts "adding 1 x '#{product.name}'"
-						line_item = LineItem.new(product_id = product.uuid, quantity=1, unit_price=product.price, name=product.name)
-						@cart.line_items << line_item
 
+						@cart.add_to_cart(product = product, quantity = 1)
 						sleep(1)
 
 						clear_screen

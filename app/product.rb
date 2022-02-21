@@ -7,6 +7,6 @@ class Product
 	def initialize(json)
 		@uuid = json["uuid"]
 		@name = json["name"]
-		@price = json["price"]
+		@price = json["price"].to_f
 	end
 end

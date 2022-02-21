@@ -1,9 +1,14 @@
-require './app/line_item'
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+# require 'pry' # not for production or test
+
+require './app/product'
 require './app/cart'
 
 RSpec.describe 'Cart' do
   let (:cart) { Cart.new }
-  let (:line_item) { LineItem.new(product_id = 123, quantity=1, unit_price="100", name="Widget")}
+  let (:product) { Product.new( { "uuid"=> 99, "name"=> "Widget", "price"=>"100.00 "} ) }
 
   context 'The cart is empty' do
     it 'has empty zero values' do
@@ -19,7 +24,7 @@ RSpec.describe 'Cart' do
 
   context 'an item is added to the cart' do
     it 'returns the correct total, discount and subtotal' do
-      cart.line_items << line_item
+      cart.add_to_cart(product, 1)
 
       subtotal = cart.subtotal
       discount = cart.discount
@@ -33,8 +38,8 @@ RSpec.describe 'Cart' do
 
   context 'another identical item is added to the cart' do
     it 'returns the correct total, discount and subtotal' do
-      cart.line_items << line_item
-      cart.line_items << line_item
+      cart.add_to_cart(product, 1)
+      cart.add_to_cart(product, 1)
 
       subtotal = cart.subtotal
       discount = cart.discount
@@ -45,14 +50,11 @@ RSpec.describe 'Cart' do
       expect(total).to eq(160)
     end
 
-    # TODO Cart add_to_cart method, group identical items
-    it 'should have a single line_item with a quantity of 2' #do
-    #   cart.line_items << line_item
-    #   cart.line_items << line_item
-
-    #   expect(cart.line_items.count).to eq(1)
-    #   expect(cart.line_items.first.quantity).to eq(2)
-    # end
-
+    it 'should have a single line_item with a quantity of 2' do
+      cart.add_to_cart(product, 1)
+      cart.add_to_cart(product, 1)
+      expect(cart.line_items.count).to eq(1)
+      expect(cart.line_items.first.quantity).to eq(2)
+    end
   end
 end
