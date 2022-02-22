@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-# require 'pry' # not for production or test env
+# require 'pry' # not for production or test
 
 require 'json'
 
@@ -11,7 +11,11 @@ require_relative "line_item"
 
 class CartApp
 	def initialize(args)
-		# TODO handle --help, -h args
+		if args.any?
+			# Configure app with startup config arg values
+			# Currently there are none
+		end
+
 		@products = []
 		@cart = Cart.new
 	end
