@@ -1,17 +1,26 @@
-# Shopiby Maretplace CLI
+# Shopiby Marketplace CLI
 
-## initializing the application environment
+## Initializing the application environment
 
 From your terminal type
 
-`bundle install`
+`bundle install` (or just `bundle`)
+
+## Shopiby Cart App help and startup options
+
+From your terminal type
+
+`ruby shopiby.rb --help`
+
+or
+
+`ruby shopiby.rb -h`
 
 ## Running the Shopiby Cart App
 
 From your terminal type
 
 `ruby shopiby.rb`
-
 
 ## Running the Test Suite
 
