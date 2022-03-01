@@ -22,6 +22,7 @@ class CartApp
 
 	def call
 		load_products
+		load_product_quantity_discounts
 		welcome
 		shop
 		finish
@@ -46,8 +47,32 @@ private
 		faux_loading(@products.count)
 
 		products_file.close
+	end
 
-		clear_screen
+	def load_product_quantity_discounts
+		puts "=== Loading Product Discounts ==="
+
+		# load the product discounts and assign them to the matching product
+		product_discounts_file = File.open("./data/product_discounts.json")
+		@json_product_discounts = JSON.load(product_discounts_file)
+		@product_discounts = @json_product_discounts.map { |j|
+			product_discount = ProductDiscount.new(j)
+			# find the matching product
+			product = @products.find{ |p| p.uuid == product_discount.product_uuid}
+			if product
+				product.quantity_discounts << product_discount
+			else
+				# raise/log exception
+				puts "Product Discount Exception: No matching product with ID #{product_discount.product_uuid}"
+			end
+		}
+
+		# provide user feedback on progress
+		faux_loading(@product_discounts.count)
+
+		product_discounts_file.close
+
+		puts
 	end
 
 	def welcome
