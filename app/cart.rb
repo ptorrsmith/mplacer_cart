@@ -8,6 +8,7 @@
 # require 'pry' # not for production or test
 
 require_relative 'line_item'
+require_relative 'product_discount'
 
 class Cart
 	attr_accessor :user_email, :line_items
@@ -23,6 +24,8 @@ class Cart
 	end
 
 	def discount
+		# Assume that the following total discounts apply
+		#  after the 'product quantity discounts' apply.
 		# 10% off on total greater than $20
 		# 15% off on total greater than $50
 		# 20% off on total greater than $100
@@ -48,10 +51,19 @@ class Cart
 
 		existing_product_line_item = @line_items.find { |li| li.product_id == product.uuid}
 
+		# ascertain new quantity for discount
+		new_quantity = existing_product_line_item ? existing_product_line_item.quantity + quantity : quantity
+
+		# get unit price for quantity
+		quantity_price = product.unit_price(new_quantity)
+
 		if existing_product_line_item
+			# get qty
+			# calculuate unit price based on product_discount
 			existing_product_line_item.quantity += quantity
+			existing_product_line_item.unit_price = quantity_price
 		else
-			line_item = LineItem.new(product_id = product.uuid, quantity=1, unit_price=product.price, name=product.name)
+			line_item = LineItem.new(product_id = product.uuid, quantity=new_quantity, unit_price=quantity_price, name=product.name)
 			@line_items << line_item
 		end
 	end
