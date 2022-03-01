@@ -145,7 +145,7 @@ private
 		else
 			puts "YOUR CART CONTENTS:"
 			@cart.line_items.each { |line_item|
-				puts "ID: #{line_item.product_id} - '#{line_item.name}' x #{line_item.quantity} @ $#{line_item.unit_price} = $#{line_item.line_item_total}"
+				puts "ID: #{line_item.product_id} - '#{line_item.name}' x #{line_item.quantity} @ $#{'%.2f' % line_item.unit_price} = $#{line_item.line_item_total}"
 			}
 			puts "----------------------------------"
 			puts "Subtotal: $#{'%.2f' % @cart.subtotal}"
