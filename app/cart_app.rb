@@ -132,7 +132,7 @@ private
 	def show_catalog
 		puts "=================== CATALOG ==================="
 		@products&.each { |product|
-			puts "ID: #{product.uuid} - `#{product.name}` @ $#{'%.2f' % product.price}"
+			puts "ID: #{product.uuid} - `#{product.name}` @ $#{'%.2f' % product.base_price}"
 		}
 		puts
 	end
