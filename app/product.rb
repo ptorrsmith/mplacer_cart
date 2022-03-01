@@ -1,8 +1,6 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-# require 'pry' # not for production or test
-
 class Product
 	attr_accessor :uuid, :name, :base_price, :quantity_discounts
 

@@ -1,14 +1,12 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
+require_relative 'line_item'
+require_relative 'product_discount'
+
 # TODO: error handling, logging
 # class CartError < StandardError
 # end
-
-# require 'pry' # not for production or test
-
-require_relative 'line_item'
-require_relative 'product_discount'
 
 class Cart
 	attr_accessor :user_email, :line_items

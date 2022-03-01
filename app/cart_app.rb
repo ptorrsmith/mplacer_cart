@@ -1,13 +1,11 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-# require 'pry' # not for production or test
-
 require 'json'
 
-require_relative "product"
-require_relative "cart"
-require_relative "line_item"
+require_relative 'product'
+require_relative 'cart'
+require_relative 'line_item'
 
 class CartApp
 	def initialize(args)

@@ -1,8 +1,6 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-# require 'pry' # not for production or test
-
 require './app/product'
 require './app/cart'
 
