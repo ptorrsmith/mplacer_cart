@@ -17,6 +17,7 @@ class Product
     if quantity == 1
       @base_price
     elsif @quantity_discounts.any?
+      # sort from highest qty_threshold to lowest, then get first that is less than or equal to the quantity
       quantity_discounts_sorted = @quantity_discounts.sort_by(&:qty_threshold).reverse
       quantity_discount = quantity_discounts_sorted.find { |d| d.qty_threshold <= quantity }
       if quantity_discount
@@ -24,7 +25,6 @@ class Product
       else
         @base_price
       end
-    # sort from highest qty_threshold to lowest, then get first that is less than or equal to the quantity
     else
       @base_price
     end
