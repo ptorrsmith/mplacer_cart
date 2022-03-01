@@ -39,6 +39,6 @@ From your terminal type the following, replacing `<branch-name>` with the branch
 
 `git bundle create marketplacer-test-peter-torr-smith.bundle <branch-name>`
 
-e.g: for local dev branch `01-basic-cart`
+e.g: for local dev branch `02-product-quantity-discounts`
 
-`git bundle create marketplacer-test-peter-torr-smith.bundle 01-basic-cart`
+`git bundle create marketplacer-test-peter-torr-smith.bundle 02-product-quantity-discounts`

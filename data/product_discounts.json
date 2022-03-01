@@ -1,0 +1,27 @@
+[
+  {
+    "product_uuid": 1411,
+    "unit_price": "15.25",
+    "qty_threshold": "2"
+  },
+  {
+    "product_uuid": 1411,
+    "unit_price": "15.00",
+    "qty_threshold": "4"
+  },
+  {
+    "product_uuid": 1411,
+    "unit_price": "14.50",
+    "qty_threshold": "6"
+  },
+  {
+    "product_uuid": 23881,
+    "unit_price": "50.00",
+    "qty_threshold": "3"
+  },
+  {
+    "product_uuid": 9999,
+    "unit_price": "50.00",
+    "qty_threshold": "3"
+  }
+]
