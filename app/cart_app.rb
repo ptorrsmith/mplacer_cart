@@ -39,7 +39,7 @@ class CartApp
     products_file = File.open("./data/products.json")
     @json_products = JSON.load(products_file)
     @products = @json_products.map { |j|
-      product = Product.new(j)
+      Product.new(j)
     }
 
     # provide user feedback on progress
@@ -104,7 +104,7 @@ class CartApp
           if product
             puts "adding 1 x '#{product.name}'"
 
-            @cart.add_to_cart(product = product, quantity = 1)
+            @cart.add_to_cart(product: product, quantity: 1)
             sleep(1)
 
             clear_screen
