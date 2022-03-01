@@ -60,7 +60,7 @@ class Cart
       existing_product_line_item.quantity += quantity
       existing_product_line_item.unit_price = quantity_price
     else
-      line_item = LineItem.new(product_id: product.uuid, quantity: new_quantity, unit_price: quantity_price, name: product.name)
+      line_item = LineItem.new(product_id = product.uuid, quantity = new_quantity, unit_price = quantity_price, name = product.name)
       @line_items << line_item
     end
   end
