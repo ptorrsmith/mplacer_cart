@@ -4,7 +4,7 @@
 class LineItem
   attr_accessor :product_id, :quantity, :unit_price, :name # could also include discount_percent for each line item
 
-  def initialize(product_id, quantity, unit_price, name)
+  def initialize(product_id:, quantity:, unit_price:, name:)
     @product_id = product_id
     @quantity = quantity
     @unit_price = unit_price

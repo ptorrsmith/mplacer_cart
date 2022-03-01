@@ -11,7 +11,7 @@ require_relative "product_discount"
 class Cart
   attr_accessor :user_email, :line_items
 
-  def initialize(user_email = "customer@example.com")
+  def initialize(user_email: "customer@example.com")
     @user_email = user_email
     @line_items = []
     clear_cart
@@ -42,7 +42,7 @@ class Cart
     subtotal - discount
   end
 
-  def add_to_cart(product, quantity)
+  def add_to_cart(product:, quantity:)
     # If cart already has that product, increment by quantity
     # else create line_item and addd to cart line_items
 
@@ -60,7 +60,7 @@ class Cart
       existing_product_line_item.quantity += quantity
       existing_product_line_item.unit_price = quantity_price
     else
-      line_item = LineItem.new(product_id = product.uuid, quantity = new_quantity, unit_price = quantity_price, name = product.name)
+      line_item = LineItem.new(product_id: product.uuid, quantity: new_quantity, unit_price: quantity_price, name: product.name)
       @line_items << line_item
     end
   end

@@ -29,7 +29,7 @@ RSpec.describe "Cart" do
 
   context "an item is added to the cart" do
     it "returns the correct total, discount and subtotal" do
-      cart.add_to_cart(product, 1)
+      cart.add_to_cart(product: product, quantity: 1)
 
       subtotal = cart.subtotal
       discount = cart.discount
@@ -43,8 +43,8 @@ RSpec.describe "Cart" do
 
   context "another identical item is added to the cart" do
     it "returns the correct total, discount and subtotal" do
-      cart.add_to_cart(product, 1)
-      cart.add_to_cart(product, 1)
+      cart.add_to_cart(product: product, quantity: 1)
+      cart.add_to_cart(product: product, quantity: 1)
 
       subtotal = cart.subtotal
       discount = cart.discount
@@ -56,8 +56,8 @@ RSpec.describe "Cart" do
     end
 
     it "should have a single line_item with a quantity of 2" do
-      cart.add_to_cart(product, 1)
-      cart.add_to_cart(product, 1)
+      cart.add_to_cart(product: product, quantity: 1)
+      cart.add_to_cart(product: product, quantity: 1)
       expect(cart.line_items.count).to eq(1)
       expect(cart.line_items.first.quantity).to eq(2)
     end
@@ -65,9 +65,9 @@ RSpec.describe "Cart" do
 
   context "a third identical item is added to the cart to go over a second discount quantity threshold" do
     it "returns the correct total, discount and subtotal" do
-      cart.add_to_cart(product, 1)
-      cart.add_to_cart(product, 1)
-      cart.add_to_cart(product, 1)
+      cart.add_to_cart(product: product, quantity: 1)
+      cart.add_to_cart(product: product, quantity: 1)
+      cart.add_to_cart(product: product, quantity: 1)
 
       subtotal = cart.subtotal
       discount = cart.discount
@@ -79,9 +79,9 @@ RSpec.describe "Cart" do
     end
 
     it "should have a single line_item with a quantity of 3" do
-      cart.add_to_cart(product, 1)
-      cart.add_to_cart(product, 1)
-      cart.add_to_cart(product, 1)
+      cart.add_to_cart(product: product, quantity: 1)
+      cart.add_to_cart(product: product, quantity: 1)
+      cart.add_to_cart(product: product, quantity: 1)
       expect(cart.line_items.count).to eq(1)
       expect(cart.line_items.first.quantity).to eq(3)
     end
